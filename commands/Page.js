@@ -49,7 +49,7 @@ class Page {
 
 
         this.log = async function (xpath) {
-            console.log(xpath);
+            console.log(xpath)
         }
 
         this.await = async function (time_delay) {
