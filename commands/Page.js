@@ -4,7 +4,9 @@ const { Builder, By, until, ElementNotInteractableException, ElementClickInterce
 var debug = require('debug');
 var webdriver = require('selenium-webdriver');
 var assert = require('assert');
-const account = require('../locator.json');
+const Home_Page = require('../data/Home_Page.json');
+const Signin_Page = require('../data/Signin_Page.json');
+const Contact_us= require('../data/Contact us_Page.json');
 //const { exception } = require('console');
 
 class Page {
@@ -35,7 +37,11 @@ class Page {
 
         };
 
+        this.click_xpath = async function(xpath){
 
+            let el= await driver.findElement(By.xpath(xpath));
+            await el.click();
+        }
         this.click_css = async function (css) {
             let el = await this.findElementByCss(css, 10000)
             await el.click()
@@ -45,7 +51,7 @@ class Page {
         this.log = async function (xpath) {
             console.log(xpath);
         }
-        
+
         this.await = async function (time_delay) {
             (await driver).sleep(time_delay);
         }
@@ -116,6 +122,11 @@ class Page {
             return priceArray;
             
         }
+        this.add_product = async function(){
+            var count = Math.floor(Math.random() * 7);
+            var product = product_list[count];
+            product.click();
+        }
 
         this.TotalPrice = async () => {
             var TotalPriceArray = new Array(7);
@@ -182,8 +193,8 @@ class Page {
         this.checkSearch = async function(){
             this.await(3000);
             //let search = await driver.findElements(By.xpath(account.box_search_result));
-            await driver.wait(until.elementLocated(By.xpath(account.box_search_result)), 50000);
-            let search = await driver.findElements(By.xpath(account.box_search_result));
+            await driver.wait(until.elementLocated(By.xpath(Home_Page.box_search_result)), 50000);
+            let search = await driver.findElements(By.xpath(Home_Page.box_search_result));
             //console.log('-----'+search.length);
             
             let search_result = new Array();
@@ -201,16 +212,16 @@ class Page {
             
             let count = Math.floor(Math.random() * (search.length-1));
             await search[count].click();   
-            var verify_text= await (await driver).findElement(By.xpath(account.box_name_search)).getText();
+            var verify_text= await (await driver).findElement(By.xpath(Home_Page.box_name_search)).getText();
             search_result[count].includes(verify_text);
         }
 
         this.searchWrong = async function(){
-            await this.senKey(account.box_Search,"dressss");
-            await this.click(account.btn_submit_search);
-            let mess= await (await this.findElementByXpath(account.box_warning_search)).getText();
+            await this.senKey(Home_Page.box_Search,"dressss");
+            await this.click(Home_Page.btn_submit_search);
+            let mess= await (await this.findElementByXpath(Home_Page.box_warning_search)).getText();
             console.log(mess);
-            assert.equal(account.mess_warning_search,mess);
+            assert.equal(Home_Page.mess_warning_search,mess);
         }
 
 

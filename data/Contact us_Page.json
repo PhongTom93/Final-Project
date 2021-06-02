@@ -1,8 +1,8 @@
 {
     "btn_contactus" : "//*[@id='contact-link']/a",
-    "btn_contact_subject" : "//*[@id='id_contact']",
-    "btn_contact_Customer" : "//*[@id='id_contact']/option[2]",
-    "btn_contact_Webmaster": "//*[@id='id_contact']/option[3]",
+    "btn_contact_subject" : "//select[@id='id_contact']",
+    "btn_contact_Customer" : "//select[@id='id_contact']//option[text()='Customer service']",
+    "btn_contact_Webmaster": "//select[@id='id_contact']//option[text()='Webmaster']",
     "btn_contact_fileUpload" : "//*[@id='fileUpload']",
     "btn_contact_submitmess" : "//*[@id='submitMessage']",
     "expect_mess_contact" : "Your message has been successfully sent to our team.",

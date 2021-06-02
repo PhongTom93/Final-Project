@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "Test.js",
   "scripts": {
-    "start": "SET NODE_ENV=dev && node ./bin/www",
-    "devstart": "SET NODE_ENV=dev && nodemon ./bin/www",
-    "test": "mocha --timeout 100000"
+    "test": "mocha --timeout 1000000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.3.4",
+    "chrome-launcher": "^0.14.0",
     "chromedriver": "^90.0.1",
     "selenium-webdriver": "^4.0.0-beta.3"
   },
