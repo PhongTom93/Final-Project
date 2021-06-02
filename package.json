@@ -1,0 +1,20 @@
+{
+  "name": "THAO",
+  "version": "1.0.0",
+  "main": "Test.js",
+  "scripts": {
+    "start": "SET NODE_ENV=dev && node ./bin/www",
+    "devstart": "SET NODE_ENV=dev && nodemon ./bin/www",
+    "test": "mocha --timeout 100000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "^90.0.1",
+    "selenium-webdriver": "^4.0.0-beta.3"
+  },
+  "devDependencies": {
+    "mocha": "^8.4.0"
+  },
+  "description": ""
+}

@@ -1,0 +1,10 @@
+{
+    "btn_contactus" : "//*[@id='contact-link']/a",
+    "btn_contact_subject" : "//*[@id='id_contact']",
+    "btn_contact_Customer" : "//*[@id='id_contact']/option[2]",
+    "btn_contact_Webmaster": "//*[@id='id_contact']/option[3]",
+    "btn_contact_fileUpload" : "//*[@id='fileUpload']",
+    "btn_contact_submitmess" : "//*[@id='submitMessage']",
+    "expect_mess_contact" : "Your message has been successfully sent to our team.",
+    "oder_reference" : "Test selenium js"
+}

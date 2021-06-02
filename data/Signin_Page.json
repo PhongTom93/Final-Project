@@ -1,0 +1,14 @@
+{
+"invalidemail" : "abc123",
+"email" : "testlqa.ppt@gmail.com",
+"password" : "lqa@12345",
+
+
+"btn_signin" : "//a[@class='login']",
+"btn_creatacc":"//*[@id='SubmitCreate']",
+"btn_submitlogin" : "//*[@id='SubmitLogin']",
+"box_creatacc_error": "//li[text()='Invalid email address.']",
+"box_emailcreate" : "//*[@id='email_create']",
+"box_emaillogin" : "//*[@id='email']",
+"box_password" : "//*[@id='passwd']"
+}
