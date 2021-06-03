@@ -2,19 +2,12 @@
   
     "URLweb" : "http://automationpractice.com/index.php",
     "URLgmail" : "https://mail.google.com/mail/u/0/#inbox",
-    
+    "oder_reference" : "Test selenium js",
     "link_upFile" : "D:/PPT/Test Selenium.txt",
 
     
     "btn_newsletter" : "//button[@name='submitNewsletter']",
-    "btn_continue_shopping" : "//span[@class='continue btn btn-default button exclusive-medium']",
-    "btn_quality_plus" : "//*[@id='quantity_wanted_p']/a[2]/span/i",
-    "btn_checkout" : ".button-medium",
-    "btn_checkout_sumary" : "//*[@id='center_column']/p[2]/a[1]",
-    "btn_checkout_adress"  : "//*[@id='center_column']/form/p/button",
-    "btn_checkout_ship" : "//*[@id='form']/p/button",
-    "btn_checkout_final" : "//*[@id='cart_navigation']/button",
-    "btn_homepage" : "//*[@id='header_logo']/a/img",
+    "btn_homepage" : "//img[@class='logo img-responsive']",
     "btn_order_cart": "//*[@id='button_order_cart'",
     "btn_view_large": "//span[@class='span_link no-print']",
     "btn_close_image" : "//a[@class='fancybox-item fancybox-close']",
@@ -26,8 +19,6 @@
     "btn_tweet" : "//span[text()='Tweet']",
     "btn_send_email" : "//a[@id='send_friend_button']",
     "btn_send" : "//button[@id='sendEmail']",
-    "btn_delete": "//a[@class='cart_quantity_delete'] ",
-    "btn_close_alert": "//a[@title='Close']",
     "btn_submit_search" : "//button[@name='submit_search']",
 
 
@@ -43,8 +34,11 @@
          {"xpath": "//*[@id='homefeatured']/li[7]/div/div[1]/div/a[1]/img ","name":"Printed Chiffon Dress","price": "//*[@id='homefeatured']/li[7]/div/div[2]/div[1]/span","add_to_cart":"//*[@id='homefeatured']/li[7]/div/div[2]/div[2]/a[1]","quantity":"//*[@id='product_7_34_0_0']/td[5]/input[1]", "trash": "//*[@id='7_34_0_501050']"} 
     ],
 
-    "product_list" : "//ul[@id='homefeatured']",
-    
+    "product_list" : "//ul[@id='homefeatured']//li",
+    "price_list" : "//ul[@id='homefeatured']//div[@class='right-block']//span[@class='price product-price']",
+    "discount_list" : "//ul[@id='homefeatured']//div[@class='right-block']//span[@class='price-percent-reduction']",
+
+
     "box_newsletter": "//*[@id='newsletter-input']",
     "box_newsletter_success" : "//p[@class='alert alert-success']",
     "box_contact_order" : "//*[@id='id_order']",
@@ -54,7 +48,7 @@
     "box_quality" : "//*[@id='quantity_wanted']",
     "box_total_price" : "//*[@id='total_price']",
     "box_pay_by_check" : "//*[@id='HOOK_PAYMENT']/div[2]/div/p",
-    "box_mess_sucess" : "//p[@class='alert alert-success']",
+    
     "box_title_product_image_large": "//span[@class='child']",
     "box_null_quantity" : "//p[@class='fancybox-error']",
     "box_product_name": "//table//tr[1]//p[@class='product-name']",
@@ -67,13 +61,14 @@
     "box_search_result" : "//div[@class='ac_results']//li",
     "box_name_search" : "//h1[@itemprop='name']",
     "box_warning_search" : "//p[@class='alert alert-warning']",
-    "check_box" : "//*[@id='uniform-cgv']",
+
+
 
     "mess_alert_danger" : "//*[@id='columns']/p",
     "mess_createacc_error": "Invalid email address.",
     
     "mess_newsletter" : "You have successfully subscribed to this newsletter.",
-    "mess_order_sucess" : "Your order on My Store is complete.",
+    
     "mess_null_quantity" : "Null quantity.",
     "mess_add_sucess" : "//h2[text()[contains(., 'Product successfully added to your shopping cart')]]",
     "mess_sucess" : "Product successfully added to your shopping cart",

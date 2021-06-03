@@ -1,0 +1,18 @@
+{ 
+"btn_continue_shopping" : "//span[@title='Continue shopping']",
+"btn_quality_plus" : "//*[@id='quantity_wanted_p']/a[2]/span/i",
+"btn_add_to_cart" : "//*[@id='add_to_cart']",
+"btn_add" : "//ul[@id='homefeatured']//div[@class='right-block']//span[text()='Add to cart']",
+"btn_checkout" : ".button-medium",
+"btn_checkout_sumary" : "//*[@id='center_column']/p[2]/a[1]",
+"btn_checkout_adress"  : "//*[@id='center_column']/form/p/button",
+"btn_checkout_ship" : "//*[@id='form']/p/button",
+"btn_checkout_final" : "//*[@id='cart_navigation']/button",
+"box_total_price" : "//span[@id='total_price']",
+"box_mess_sucess" : "//p[@class='alert alert-success']",
+"mess_order_sucess" : "Your order on My Store is complete.",
+"box_pay_by_check" : "//*[@id='HOOK_PAYMENT']/div[2]/div/p",
+"check_box" : "//*[@id='uniform-cgv']",
+"btn_close_alert": "//a[@title='Close']",
+"btn_delete": "//a[@class='cart_quantity_delete'] "
+}

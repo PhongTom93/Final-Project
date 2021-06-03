@@ -7,6 +7,7 @@ var assert = require('assert');
 const Home_Page = require('../data/Home_Page.json');
 const Signin_Page = require('../data/Signin_Page.json');
 const Contact_us= require('../data/Contact us_Page.json')
+const Checkout = require('../data/Checkout.json');
 const { sign } = require('crypto');
 
 describe('Final Project', async function () {
@@ -76,56 +77,48 @@ describe('Final Project', async function () {
         // })
 
         //////////////TC8/////////////////////////////////////
-        it('Buy Product', async function () {
+        // it('Buy Product', async function () {
 
-            await page.getweb(Home_Page.URLweb);
-
-            await page.login(Signin_Page.btn_signin,Signin_Page.box_emaillogin,account.email,account.box_password,account.password,account.btn_submitlogin,account.btn_homepage);
-
-            await page.click(account.xpath_product[0]);
-            await page.click(account.btn_add_to_cart);
-            await page.click_css(account.btn_continue_shopping);
-            await page.click(account.btn_quality_plus);
-            await page.click(account.btn_add_to_cart);
-
-            await page.click_css(account.btn_checkout);
-            await page.checkprice(account.box_total_price);
-            await page.click(account.btn_checkout_sumary);
-            await page.click(account.btn_checkout_adress);
-            await page.click(account.check_box);
-            await page.click(account.btn_checkout_ship);
-            await page.click(account.box_pay_by_check);
-            await page.click(account.btn_checkout_final); 
-            await page.check_buy_sucess(account.box_mess_sucess, account.mess_order_sucess);
-            await page.closeweb();
-        })
+        //     await page.getweb(Home_Page.URLweb);
+        //     await page.login()
+        //     await page.add_check_price()
+        //     await page.click(Checkout.btn_checkout_sumary);
+        //     await page.click(Checkout.btn_checkout_adress);
+        //     await page.click(Checkout.check_box);
+        //     await page.click(Checkout.btn_checkout_ship);
+        //     await page.click(Checkout.box_pay_by_check);
+        //     await page.click(Checkout.btn_checkout_final); 
+        //     await page.check_buy_sucess(Checkout.box_mess_sucess, Checkout.mess_order_sucess);
+        //     await page.closeweb();
+        // })
 
 
-        ///////////////////////TC9///////////////////////////////
+        /////////////////////TC9///////////////////////////////
         // it('Buy Product Edit Information', async function(){
-        //     await page.getweb(account.URLweb);
-        //     await page.login(account.btn_signin,account.box_emaillogin,account.email,account.box_password,account.password,account.btn_submitlogin,account.btn_homepage);  
-        //     await page.checkEl_Addcart();
-        //     await page.getTextFunc();
-        //     await page.click(account.btn_checkout_sumary);
-        //     await page.click(account.btn_checkout_adress);
-        //     await page.click(account.btn_checkout_ship);
-        //     await page.click(account.btn_close_alert);
-        //     await page.click(account.check_box);
-        //     await page.click(account.btn_checkout_ship);
-        //     await page.click(account.box_pay_by_check);
-        //     await page.click(account.btn_checkout_final);
-        //     await page.check_buy_sucess(account.box_mess_sucess, account.mess_order_sucess);
+        //     await page.getweb(Home_Page.URLweb)
+        //     await page.login()  
+        //     await page.checkEl_Addcart()
+        //     await page.ChangeQuantity()
+        //     await page.DeleteProduct()
+        //     await page.click(Checkout.btn_checkout_sumary);
+        //     await page.click(Checkout.btn_checkout_adress);
+        //     await page.click(Checkout.btn_checkout_ship);
+        //     await page.click(Checkout.btn_close_alert);
+        //     await page.click(Checkout.check_box);
+        //     await page.click(Checkout.btn_checkout_ship);
+        //     await page.click(Checkout.box_pay_by_check);
+        //     await page.click(Checkout.btn_checkout_final);
+        //     await page.check_buy_sucess(Checkout.box_mess_sucess, Checkout.mess_order_sucess);
         // })
 
         ///////////////////TC10////////////////////////////////////
-        // it('Buy sale', async function(){
-        //     await page.getweb(account.URLweb);
-        //     await page.login(account.btn_signin,account.box_emaillogin,account.email,account.box_password,account.password,account.btn_submitlogin,account.btn_homepage);
-        //     await page.FindSale();
-        //     await page.closeweb();
+        it('Buy sale', async function(){
+            await page.getweb(Home_Page.URLweb)
+            await page.login()
+            await page.GetDiscount()
+            //await page.closeweb()
             
-        // })
+        })
         ////////////////////TC11///////////////////////////////////
 
         // it('View Large', async function(){

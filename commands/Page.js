@@ -4,15 +4,19 @@ const { Builder, By, until, ElementNotInteractableException, ElementClickInterce
 var debug = require('debug');
 var webdriver = require('selenium-webdriver');
 var assert = require('assert');
+
 const Home_Page = require('../data/Home_Page.json');
 const Signin_Page = require('../data/Signin_Page.json');
-const Contact_us= require('../data/Contact us_Page.json');
+const Contact_us = require('../data/Contact us_Page.json');
+const Checkout = require('../data/Checkout.json');
+const { win32 } = require('path');
 //const { exception } = require('console');
 
 class Page {
     constructor() {
 
-        var driver = new Builder().forBrowser("chrome").build();
+        const driver = new Builder().forBrowser("chrome").build();
+        const actions = driver.actions({async: true});
         var nodeURL = 'http://10.10.31.211:6666/wd/hub'
         // var driver = new webdriver.Builder()
         //     .usingServer(nodeURL)
@@ -37,9 +41,9 @@ class Page {
 
         };
 
-        this.click_xpath = async function(xpath){
+        this.click_xpath = async function (xpath) {
 
-            let el= await driver.findElement(By.xpath(xpath));
+            let el = await driver.findElement(By.xpath(xpath));
             await el.click();
         }
         this.click_css = async function (css) {
@@ -100,32 +104,34 @@ class Page {
             const el = driver.wait(until.elementLocated(By.css(css)), timeout);
             return driver.wait(until.elementIsVisible(el), timeout);
         };
-        
-        this.login = async function (btn_signin, box_emaillogin, email, box_password, password, btn_submitlogin, btn_homepage) {
-            await this.click(btn_signin);
-            await this.senKey(box_emaillogin, email);
-            await this.senKey(box_password, password);
-            await this.click(btn_submitlogin);
-            await this.click(btn_homepage);
+
+        this.login = async function () {
+            await this.click(Signin_Page.btn_signin);
+            await this.senKey(Signin_Page.box_emaillogin, Signin_Page.email);
+            await this.senKey(Signin_Page.box_password, Signin_Page.password);
+            await this.click(Signin_Page.btn_submitlogin);
+            await this.click(Home_Page.btn_homepage);
+            await this.maximizePage()
         }
 
-        this.getPrice = async () => {
-            var priceArray = new Array(7);
-            for (var i = 0; i < 7; i++) {
-                var price = await (await driver.findElement(By.xpath(account.product[i].price)).getText());
-                while (price.charAt(0)=='$') price=price.substr(1);
-                //console.log(price);
-                priceArray[i] = price;
-                //console.log(priceArray[i]);
-            }
-            //console.log(priceArray);
-            return priceArray;
+        this.add_check_price = async function () {
+            let price_list= await this.getPriceList();
+            var product_list = await this.getProductList()
+            this.await(5000)
+            let index = Math.floor(Math.random() * (product_list.length - 1));
+            await (product_list[index]).click()
+            this.await(5000)
+            await this.click(Checkout.btn_add_to_cart);
+            await this.click(Checkout.btn_continue_shopping);
+            await this.click(Checkout.btn_quality_plus);
+            await this.click(Checkout.btn_add_to_cart);
+            await this.click_css(Checkout.btn_checkout); 
+            let check_price = price_list[index] *3 + 2;
+            let total_price = await this.findElementByXpath(Checkout.box_total_price).getText();
+            total_price= total_price.substr(1)
+            total_price.substr(check_price)
             
-        }
-        this.add_product = async function(){
-            var count = Math.floor(Math.random() * 7);
-            var product = product_list[count];
-            product.click();
+            
         }
 
         this.TotalPrice = async () => {
@@ -143,85 +149,70 @@ class Page {
             return TotalPriceArray()
         }
 
-        this.checkEl_Addcart = async function(){
-                for (var i=0;i<5;i++){
-                    let count = Math.floor(Math.random() * 7);
-                    await this.click(account.product[count].add_to_cart);
-                    await this.await(3000);
-                    await this.click(account.btn_continue_shopping);
-                    await this.await(3000);
-                }
-                
+        this.checkEl_Addcart = async function () {
+            for (var i = 0; i < 5; i++) {
+                let product_list = await this.getProductList()
+                let index = Math.floor(Math.random() * 7)
+                await product_list[index].click()
+                await this.click(Checkout.btn_add_to_cart)
+                await this.click(Checkout.btn_continue_shopping)
+                await this.click(Home_Page.btn_homepage);
             }
 
-        this.getTextFunc =async function(){
-            await this.click(account.btn_view_cart);
-            var quantity = await driver.findElements(By.xpath(account.locator_quantity));
-            //console.log(quantity);
+        }
+
+        this.ChangeQuantity = async function () {
+            await this.click(Home_Page.btn_view_cart);
+            var quantity = await driver.findElements(By.xpath(Home_Page.locator_quantity));
             let quantity_cart = new Array();
-            let i=0;
-            for (let x of quantity){
-                quantity_cart[i] = await x.getAttribute('value');  
+            let i = 0;
+            for (let x of quantity) {
+                quantity_cart[i] = await x.getAttribute('value');
                 i++;
 
             }
-            //console.log('--------'+quantity_cart);
-            for (let j=0; j<quantity_cart.length; j++)
-            {
-                if(quantity_cart[j]==1){
-                    quantity_cart[j]=3;
+            for (let j = 0; j < quantity_cart.length; j++) {
+                if (quantity_cart[j] == 1) {
+                    quantity_cart[j] = 3;
                     break;
                 }
                 break;
             }
-            //console.log('--------'+quantity_cart);
-            var deleteList_Array = new Array();
-            let z=0;
-            var deleteList = await driver.findElements(By.xpath(account.btn_delete));
-            //console.log(deleteList);
-            for(let y of deleteList){
-                deleteList_Array[z]= await y.getAttribute('id');
-                z++;
-            }
-            //console.log(deleteList_Array);
-            let count = Math.floor(Math.random() * (deleteList_Array.length-1));
-            let product_delete = "//*[@id='" + deleteList_Array[count] + "']";
-            console.log(product_delete);
-            await this.click(product_delete);
         }
 
-        this.checkSearch = async function(){
+        this.DeleteProduct = async function(){
+            var deleteList = await driver.findElements(By.xpath(Checkout.btn_delete));
+            let count = Math.floor(Math.random() * (deleteList.length - 1));
+            await deleteList[count].click()
+        }
+
+
+        this.checkSearch = async function () {
             this.await(3000);
-            //let search = await driver.findElements(By.xpath(account.box_search_result));
             await driver.wait(until.elementLocated(By.xpath(Home_Page.box_search_result)), 50000);
             let search = await driver.findElements(By.xpath(Home_Page.box_search_result));
-            //console.log('-----'+search.length);
-            
             let search_result = new Array();
-            let i=0;
-            for (let x of search){
-                search_result[i] = await x.getText();  
-                i++;  
+            let i = 0;
+            for (let x of search) {
+                search_result[i] = await x.getText();
+                i++;
             }
-            //console.log('------'+search_result)
-            for (let j = 0; j < search_result.length; j++)
-            {
-                //console.log('------'+search_result[i]);
+            for (let j = 0; j < search_result.length; j++) {
                 search_result[j].includes("dress");
             }
-            
-            let count = Math.floor(Math.random() * (search.length-1));
-            await search[count].click();   
-            var verify_text= await (await driver).findElement(By.xpath(Home_Page.box_name_search)).getText();
+
+            let count = Math.floor(Math.random() * (search.length - 1));
+            await search[count].click();
+            var verify_text = await (await driver).findElement(By.xpath(Home_Page.box_name_search)).getText();
             search_result[count].includes(verify_text);
         }
 
-        this.searchWrong = async function(){
-            await this.senKey(Home_Page.box_Search,"dressss");
+        this.searchWrong = async function () {
+            await this.senKey(Home_Page.box_Search, "dressss");
             await this.click(Home_Page.btn_submit_search);
-            let mess= await (await this.findElementByXpath(Home_Page.box_warning_search)).getText();
+            let mess = await (await this.findElementByXpath(Home_Page.box_warning_search)).getText();
             console.log(mess);
-            assert.equal(Home_Page.mess_warning_search,mess);
+            assert.equal(Home_Page.mess_warning_search, mess);
         }
 
 
@@ -231,18 +222,69 @@ class Page {
 
         }
 
-        this.getProductList = async function(){
-            for (var i=0;i<5;i++){
-                var product_list = await this.findElementByXpath(account.product_list);
-                console.log(product_list);
-               
-            }     
-        }
-    
+        this.getProductList = async function () {
 
-        this.compareStr = async function(xpath,check_mess){
+            var product_list = await driver.findElements(By.xpath(Home_Page.product_list));
+            return product_list;
+            //console.log(product_list);
+
+        }
+
+        this.getPriceList = async function(){
+
+            var price = await driver.findElements(By.xpath(Home_Page.price_list));
+            //console.log("-------------" + price_list)
+            let price_list = new Array();
+            let i = 0;
+            for (let x of price) {
+                price_list[i] = await x.getText();
+                i++;
+            }
+            for (let j=0; j<price_list.length; j++) {
+                if (price_list[j].charAt(0) == '$') price = price_list[j].substr(1);
+                price_list[j] = price;
+            }
+            //console.log(price_list)
+            return price_list;
+
+
+        }
+
+        this.GetDiscount = async function(){
+            let Add_List = await this.Get_add_List()
+            //console.log(Add_List)
+            let DiscountList = await driver.findElements(By.xpath(Home_Page.discount_list));
+            let i = 0;
+            var Discount = new Array()
+            for (let x of DiscountList) {
+                Discount[i] = await x.getText();
+                i++;
+            }
+            let index = Math.floor(Math.random() * (Discount.length - 1));
+            driver.executeScript("window.scrollBy(0,1000)")
+            //console.log(Discount)
+            if( DiscountList[index]=="-20%"){
+                await DiscountList[index].click()
+                await actions.move(DiscountList[index]).pause(5000).perform();
+            }
+            for (let j=0; j<Add_List.length; j++){
+                if(await driver.wait(until.elementLocated(Add_List[j])))
+                {
+                    await Add_List[j].click()
+                }
+            }
+
+        }
+        
+        this.Get_add_List = async function(){
+            var Add_List = await driver.findElements(By.xpath(Checkout.btn_add));
+            return Add_List
+        }
+
+        this.compareStr = async function (xpath, check_mess) {
             let text = await this.findElementByXpath(xpath).getText();
             text.includes(check_mess)
+
         }
 
     }
