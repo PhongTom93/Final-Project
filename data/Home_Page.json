@@ -20,6 +20,7 @@
     "btn_send_email" : "//a[@id='send_friend_button']",
     "btn_send" : "//button[@id='sendEmail']",
     "btn_submit_search" : "//button[@name='submit_search']",
+    "btn_close_null" : "//a[@title='Close']",
 
 
     "class_btn_checkout" : "button btn btn-default button-medium",
@@ -37,6 +38,7 @@
     "product_list" : "//ul[@id='homefeatured']//li",
     "price_list" : "//ul[@id='homefeatured']//div[@class='right-block']//span[@class='price product-price']",
     "discount_list" : "//ul[@id='homefeatured']//div[@class='right-block']//span[@class='price-percent-reduction']",
+    "name_list" : "//ul[@id='homefeatured']//a[@class='product-name']",
 
 
     "box_newsletter": "//*[@id='newsletter-input']",

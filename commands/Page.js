@@ -286,7 +286,22 @@ class Page {
             text.includes(check_mess)
 
         }
+        
+        this.ViewLarge = async function(){
+            await this.click(Home_Page.btn_view_large);
 
+        }
+
+        this.GetProductName = async function(){
+            var Name = await driver.findElements(By.xpath(Home_Page.name_list));
+            let i = 0;
+            let Name_List = new Array()
+            for (let x of Name) {
+                Name_List[i] = await x.getText();
+                i++;
+            }
+            return Name_List
+        }
     }
 }
 

@@ -112,18 +112,42 @@ describe('Final Project', async function () {
         // })
 
         ///////////////////TC10////////////////////////////////////
-        it('Buy sale', async function(){
-            await page.getweb(Home_Page.URLweb)
-            await page.login()
-            await page.GetDiscount()
-            //await page.closeweb()
+        // it('Buy sale', async function(){
+        //     await page.getweb(Home_Page.URLweb)
+        //     await page.login()
+        //     await page.GetDiscount()
+        //     await page.click(Checkout.btn_checkout_sumary);
+        //     await page.click(Checkout.btn_checkout_adress);
+        //     await page.click(Checkout.check_box);
+        //     await page.click(Checkout.btn_checkout_ship);
+        //     await page.click(Checkout.box_pay_by_check);
+        //     await page.click(Checkout.btn_checkout_final); 
+        //     await page.check_buy_sucess(Checkout.box_mess_sucess, Checkout.mess_order_sucess);
+        //     await page.closeweb();
             
-        })
+        // })
         ////////////////////TC11///////////////////////////////////
 
         // it('View Large', async function(){
-        //     await page.getweb(account.URLweb);
-        //     await page.ViewLagre();
+        //     await page.getweb(Home_Page.URLweb);
+        //     var Name_List = await page.GetProductName()
+        //     var Product_List =  await page.getProductList()
+        //     let index = Math.floor(Math.random() * (Product_List.length - 1))
+        //     await Product_List[index].click()
+        //     await page.click(Home_Page.btn_view_large)
+        //     await page.compareStr(Home_Page.box_title_product_image_large,Name_List[index])
+        //     //////////////////////////////////////////
+        //     await page.click(Home_Page.btn_close_image)
+        //     await page.findElementByXpath(Home_Page.box_quality).clear()
+        //     await page.senKey(Home_Page.box_quality,"0")
+        //     await page.click(Checkout.btn_add_to_cart)
+        //     await page.compareStr(Home_Page.box_null_quantity, Home_Page.mess_null_quantity)
+        //     await page.click(Home_Page.btn_close_null)
+        //     //////////////////////////////////////////
+        //     await page.findElementByXpath(Home_Page.box_quality).clear()
+        //     await page.senKey(Home_Page.box_quality,"1")
+        //     await page.click(Checkout.btn_add_to_cart)
+        //     await page.compareStr(Checkout.box_add_sucess,Checkout.mess_add_sucess)
         //     await page.closeweb();
         // })
 

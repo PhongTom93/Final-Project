@@ -14,5 +14,7 @@
 "box_pay_by_check" : "//*[@id='HOOK_PAYMENT']/div[2]/div/p",
 "check_box" : "//*[@id='uniform-cgv']",
 "btn_close_alert": "//a[@title='Close']",
-"btn_delete": "//a[@class='cart_quantity_delete'] "
+"btn_delete": "//a[@class='cart_quantity_delete'] ",
+"box_add_sucess" : "//i[@class='icon-ok']",
+"mess_add_sucess": "Product successfully added to your shopping cart"
 }
