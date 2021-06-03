@@ -18,6 +18,7 @@
     "btn_send" : "//button[@id='sendEmail']",
     "btn_submit_search" : "//button[@name='submit_search']",
     "btn_close_null" : "//a[@title='Close']",
+    "btn_send_review" : "//button[@id='submitNewMessage']",
 
 
     "class_btn_checkout" : "button btn btn-default button-medium",
@@ -46,6 +47,10 @@
     "box_search_result" : "//div[@class='ac_results']//li",
     "box_name_search" : "//h1[@itemprop='name']",
     "box_warning_search" : "//p[@class='alert alert-warning']",
+    "box_write_review" : "//a[@class='open-comment-form']",
+    "box_title_review": "//input[@id='comment_title']",
+    "box_content_review" : "//textarea[@id='content']",
+    "box_send_review_sucess" : "//div[@class='fancybox-inner']//p",
 
 
 
@@ -57,9 +62,11 @@
     "mess_sucess" : "Product successfully added to your shopping cart",
     "mess_sendmail_sucess" : "Your e-mail has been sent successfully",
     "mess_warning_search" : "No results were found for your search \"dressss\"",
+    "mess_send_review_sucess" : "Your comment has been added and will be available once approved by a moderator",
     "check_text" : "Search",
     "locator_quantity" : "//td[@class='cart_quantity text-center']//input[@type='text']",
     "sale": "//*[@id='homefeatured']/li[7]/div/div[2]/div[1]/span[3]",
+
 
 
 

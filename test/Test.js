@@ -52,10 +52,11 @@ describe('Final Project', async function () {
             await page.senKey(Contact_us.box_contact_message, "Test Selenium");
             await page.click(Contact_us.btn_contact_submitmess);
             await page.checkmessage(Contact_us.box_contact_sucess, Contact_us.expect_mess_contact);
+            await page.closeweb();
         })
 
         ////////////////////TC5/////////////////////////////////
-        // it(('Check Search'), async function(){
+        it(('Check Search'), async function(){
 
             await page.getweb(Home_Page.URLweb);
             await page.senKey(Home_Page.box_Search, "Test Selenium");
@@ -106,6 +107,7 @@ describe('Final Project', async function () {
             await page.click(Checkout.box_pay_by_check);
             await page.click(Checkout.btn_checkout_final);
             await page.check_buy_sucess(Checkout.box_mess_sucess, Checkout.mess_order_sucess);
+            await page.closeweb();
         })
 
         /////////////////TC10////////////////////////////////////
@@ -120,9 +122,9 @@ describe('Final Project', async function () {
             await page.click(Checkout.box_pay_by_check);
             await page.click(Checkout.btn_checkout_final); 
             await page.check_buy_sucess(Checkout.box_mess_sucess, Checkout.mess_order_sucess);
-            await page.closeweb();
-            
+            await page.closeweb();    
         })
+
         ////////////////////TC11///////////////////////////////////
 
         it('View Large', async function(){
@@ -163,8 +165,24 @@ describe('Final Project', async function () {
             await page.senKey(TweetPage.box_signin_tweet_pass,Signin_Page.password);
             await page.click(TweetPage.btn_login_tweet);
             await page.click(TweetPage.btn_tweet);
-            
+            await page.closeweb();
         })
+
+        ///////////////////TC13//////////////////////////////
+        it('Write review', async function(){
+            await page.getweb(Home_Page.URLweb)
+            await page.login()
+            await page.maximizePage()
+            var Product_List =  await page.getProductList()
+            let index = Math.floor(Math.random() * (Product_List.length - 1))
+            await Product_List[index].click()
+            await page.click(Home_Page.box_write_review)
+            await page.senKey(Home_Page.box_title_review, "Test Selenium")
+            await page.senKey(Home_Page.box_content_review, "lqa tester")
+            await page.click(Home_Page.btn_send_review)
+            await page.compareStr(Home_Page.box_send_review_sucess,Home_Page.mess_send_review_sucess)
+            await page.closeweb();
+        });
 
         ///////////////////////TC14//////////////////////////
         it('Send to friend', async function(){
@@ -178,7 +196,7 @@ describe('Final Project', async function () {
             await page.senKey(Home_Page.box_friend_mail,Signin_Page.email);
             await page.click(Home_Page.btn_send)
             await page.compareStr(Home_Page.box_sendmail_sucess, Home_Page.mess_sendmail_sucess)
-
+            await page.closeweb();
         })
     });
 });
