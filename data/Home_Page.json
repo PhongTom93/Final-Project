@@ -14,9 +14,6 @@
     "btn_close": "//span[@title='Close window']",
     "btn_quantity": "//*[@id='quantity_wanted']",
     "btn_view_cart": "//a[@title='View my shopping cart']",
-    "btn_share_tweet" : "//*[@class='btn btn-default btn-twitter']",
-    "btn_login_tweet" : "//span[text()='Log in']",
-    "btn_tweet" : "//span[text()='Tweet']",
     "btn_send_email" : "//a[@id='send_friend_button']",
     "btn_send" : "//button[@id='sendEmail']",
     "btn_submit_search" : "//button[@name='submit_search']",
@@ -25,15 +22,6 @@
 
     "class_btn_checkout" : "button btn btn-default button-medium",
     "class_btn_checkout_final" : "button btn btn-default standard-checkout button-medium",
-    "product" :[
-         {"xpath": "//*[@id='homefeatured']/li[1]/div/div[1]/div/a[1]/img ","name":"Faded Short Sleeve T-shirts","price": " //*[@id='homefeatured']/li[1]/div/div[2]/div[1]/span","add_to_cart":"//*[@id='homefeatured']/li[1]/div/div[2]/div[2]/a[1]","quantity" :"//*[@id='product_1_1_0_0']/td[5]/input[1]", "trash": "//*[@id='1_1_0_501050']"},
-         {"xpath": "//*[@id='homefeatured']/li[2]/div/div[1]/div/a[1]/img ","name":"Blouse","price": "//*[@id='homefeatured']/li[2]/div/div[2]/div[1]/span","add_to_cart":"//*[@id='homefeatured']/li[2]/div/div[2]/div[2]/a[1]","quantity":"//*[@id='product_2_7_0_0']/td[5]/input[1]", "trash": "//*[@id='2_7_0_501050']"},
-         {"xpath": "//*[@id='homefeatured']/li[3]/div/div[1]/div/a[1]/img ","name":"Printed Dress","price": "//*[@id='homefeatured']/li[3]/div/div[2]/div[1]/span","add_to_cart":"//*[@id='homefeatured']/li[3]/div/div[2]/div[2]/a[1]","quantity":"//*[@id='product_3_13_0_0']/td[5]/input[1]", "trash": "//*[@id='3_13_0_501050']"},
-         {"xpath": "//*[@id='homefeatured']/li[4]/div/div[1]/div/a[1]/img ","name":"Printed Dress","price": "//*[@id='homefeatured']/li[4]/div/div[2]/div[1]/span","add_to_cart":"//*[@id='homefeatured']/li[4]/div/div[2]/div[2]/a[1]","quantity":"//*[@id='product_4_16_0_0']/td[5]/input[1]", "trash": "//*[@id='4_16_0_501050']"},
-         {"xpath": "//*[@id='homefeatured']/li[5]/div/div[1]/div/a[1]/img ","name":"Printed Summer Dress","price": "//*[@id='homefeatured']/li[5]/div/div[2]/div[1]/span","add_to_cart":"//*[@id='homefeatured']/li[5]/div/div[2]/div[2]/a[1]","quantity":"//*[@id='product_5_19_0_0']/td[5]/input[1]", "trash": "//*[@id='5_19_0_501050']"},
-         {"xpath": "//*[@id='homefeatured']/li[6]/div/div[1]/div/a[1]/img ","name":"Printed Summer Dress","price": "//*[@id='homefeatured']/li[6]/div/div[2]/div[1]/span","add_to_cart":"//*[@id='homefeatured']/li[6]/div/div[2]/div[2]/a[1]","quantity":"//*[@id='product_6_31_0_0']/td[5]/input[1]", "trash": "//*[@id='6_31_0_501050']"},
-         {"xpath": "//*[@id='homefeatured']/li[7]/div/div[1]/div/a[1]/img ","name":"Printed Chiffon Dress","price": "//*[@id='homefeatured']/li[7]/div/div[2]/div[1]/span","add_to_cart":"//*[@id='homefeatured']/li[7]/div/div[2]/div[2]/a[1]","quantity":"//*[@id='product_7_34_0_0']/td[5]/input[1]", "trash": "//*[@id='7_34_0_501050']"} 
-    ],
 
     "product_list" : "//ul[@id='homefeatured']//li",
     "price_list" : "//ul[@id='homefeatured']//div[@class='right-block']//span[@class='price product-price']",
@@ -47,15 +35,10 @@
     "box_contact_message" : "//*[@id='message']",
     "box_contact_sucess" : "//*[@id='center_column']/p",
     "box_Search" : "//*[@id='search_query_top']",
-    "box_quality" : "//*[@id='quantity_wanted']",
-    "box_total_price" : "//*[@id='total_price']",
-    "box_pay_by_check" : "//*[@id='HOOK_PAYMENT']/div[2]/div/p",
-    
+    "box_quality" : "//*[@id='quantity_wanted']", 
     "box_title_product_image_large": "//span[@class='child']",
     "box_null_quantity" : "//p[@class='fancybox-error']",
     "box_product_name": "//table//tr[1]//p[@class='product-name']",
-    "box_signin_tweet_email" : "//input[@name='session[username_or_email]']",
-    "box_signin_tweet_pass" : "//input[@name='session[password]']",
     "box_friend_name" : "//input[@id='friend_name']",
     "box_friend_mail" : "//input[@id='friend_email']",
     "box_sendmail_sucess" : "//p[text()[contains(., 'successfully')]]",
@@ -68,9 +51,7 @@
 
     "mess_alert_danger" : "//*[@id='columns']/p",
     "mess_createacc_error": "Invalid email address.",
-    
     "mess_newsletter" : "You have successfully subscribed to this newsletter.",
-    
     "mess_null_quantity" : "Null quantity.",
     "mess_add_sucess" : "//h2[text()[contains(., 'Product successfully added to your shopping cart')]]",
     "mess_sucess" : "Product successfully added to your shopping cart",

@@ -1,0 +1,7 @@
+{
+    "btn_share_tweet" : "//*[@class='btn btn-default btn-twitter']",
+    "btn_login_tweet" : "//span[text()='Log in']",
+    "btn_tweet" : "//span[text()='Tweet']",
+    "box_signin_tweet_email" : "//input[@name='session[username_or_email]']",
+    "box_signin_tweet_pass" : "//input[@name='session[password]']"
+}

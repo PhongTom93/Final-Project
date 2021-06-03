@@ -9,6 +9,7 @@ const Home_Page = require('../data/Home_Page.json');
 const Signin_Page = require('../data/Signin_Page.json');
 const Contact_us = require('../data/Contact us_Page.json');
 const Checkout = require('../data/Checkout.json');
+const TweetPage = require('../data/Tweet_Page.json')
 const { win32 } = require('path');
 //const { exception } = require('console');
 
@@ -17,7 +18,7 @@ class Page {
 
         const driver = new Builder().forBrowser("chrome").build();
         const actions = driver.actions({async: true});
-        var nodeURL = 'http://10.10.31.211:6666/wd/hub'
+        //var nodeURL = 'http://10.10.31.211:6666/wd/hub'
         // var driver = new webdriver.Builder()
         //     .usingServer(nodeURL)
         //     .withCapabilities(webdriver.Capabilities.chrome())
@@ -51,11 +52,6 @@ class Page {
             await el.click()
         };
 
-
-        this.log = async function (xpath) {
-            console.log(xpath)
-        }
-
         this.await = async function (time_delay) {
             (await driver).sleep(time_delay);
         }
@@ -65,23 +61,14 @@ class Page {
             await keys.sendKeys(key);
         };
 
-        this.checkprice = async function (xpath) {
-            let gettext = await this.findElementByXpath(xpath).getText();
-            console.log(gettext);
-            assert.equal(gettext, "$51.53");
-        };
-
         this.check_mess = async function (xpath, check_text) {
             let text = await this.findElementByXpath(xpath).getAttribute("value");
-            //console.log(text);
             assert.notStrictEqual(text, "Search");
         };
 
         this.check_Search = async function (xpath) {
             let clear = await this.findElementByXpath(xpath).clear();
-            //console.log(clear);
             let check = await this.findElementByXpath(xpath).getAttribute("placeholder");
-            //console.log(check);
             assert.equal(check, "Search");
         };
 
@@ -137,15 +124,10 @@ class Page {
         this.TotalPrice = async () => {
             var TotalPriceArray = new Array(7);
             var showList = await this.getPrice();
-            //console.log(showList);
             for (var j = 0; j < 7; j++) {
-                //console.log(showList[j])
                 let total = (showList[j] * 3).toFixed(2);
-                //console.log(total);
                 TotalPriceArray[j] = total;
-                //console.log(TotalPriceArray[j]);
             }
-            //console.log(TotalPriceArray);
             return TotalPriceArray()
         }
 
@@ -226,14 +208,12 @@ class Page {
 
             var product_list = await driver.findElements(By.xpath(Home_Page.product_list));
             return product_list;
-            //console.log(product_list);
 
         }
 
         this.getPriceList = async function(){
 
             var price = await driver.findElements(By.xpath(Home_Page.price_list));
-            //console.log("-------------" + price_list)
             let price_list = new Array();
             let i = 0;
             for (let x of price) {
@@ -244,7 +224,6 @@ class Page {
                 if (price_list[j].charAt(0) == '$') price = price_list[j].substr(1);
                 price_list[j] = price;
             }
-            //console.log(price_list)
             return price_list;
 
 
@@ -252,7 +231,6 @@ class Page {
 
         this.GetDiscount = async function(){
             let Add_List = await this.Get_add_List()
-            //console.log(Add_List)
             let DiscountList = await driver.findElements(By.xpath(Home_Page.discount_list));
             let i = 0;
             var Discount = new Array()
@@ -262,7 +240,6 @@ class Page {
             }
             let index = Math.floor(Math.random() * (Discount.length - 1));
             driver.executeScript("window.scrollBy(0,1000)")
-            //console.log(Discount)
             if( DiscountList[index]=="-20%"){
                 await DiscountList[index].click()
                 await actions.move(DiscountList[index]).pause(5000).perform();
@@ -301,6 +278,18 @@ class Page {
                 i++;
             }
             return Name_List
+        }
+
+        this.SwitchWindow = async function(){
+            var winHandles= driver.getAllWindowHandles();
+            winHandles.then(async function(handles) 
+            {
+                var parentWindow=handles[0];
+                var popUpWindow=handles[1];
+                await driver.switchTo().window(popUpWindow);
+                
+            })
+            
         }
     }
 }
